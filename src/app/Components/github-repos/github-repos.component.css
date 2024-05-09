@@ -1,0 +1,13 @@
+.center{
+    text-align: center;
+}
+.bg-secondary{
+  background-color: rgb(34, 172, 218) !important;
+}
+.text-primary{
+  color: black !important;
+}
+.border-transperent{
+  border: none !important;
+}
+

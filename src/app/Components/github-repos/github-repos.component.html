@@ -1,0 +1,42 @@
+<div *ngIf="githubRepos" class="card mt-3">
+  <div class="card-header bg-secondary text-white">
+    <h4>Github Repositories</h4>
+  </div>
+  <div class="card border border-primary-20 ">
+    <div class="row">
+      <div class="col-6">
+        <div class="card-body">
+          <ul class="list-group  " >
+            <li *ngFor="let repo of githubRepos| slice:0:githubRepos.length/2 | paginate: { itemsPerPage: 10, currentPage: p }" class="list-group-item font-weight-bold  justify-content-between border border-secondary mb-2">
+                <a [href]="repo.html_url" class= "text-primary" target="_blank">
+                  <p class="fs-4 fw-bold">{{repo.name}}</p></a>
+                <div class="card border-transperent">
+                    <span class= "card-text text-wrap  ">{{repo.description}}</span>
+                </div><!-- <span class= "badge bg-warning">{{repo.languages_url}}</span> -->
+                <a [href]="repo.languages_url" class= "text-primary" target="_blank">
+                    <p class=" fw-bold mt-3">Topics Used</p></a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card-body ">
+          <ul class="list-group " >
+            <li *ngFor="let repo of githubRepos| slice:githubRepos.length/2:githubRepos.length| paginate: { itemsPerPage: 10, currentPage: p }" class="list-group-item font-weight-bold  justify-content-between border border-secondary mb-2">
+                <a [href]="repo.html_url" class= "text-primary" target="_blank">
+                  <p class="fs-3 fw-bold">{{repo.name}}</p></a>
+                <div class="card ">
+                    <span class= "card-text text-wrap">{{repo.description}}</span>
+                </div><!-- <span class= "badge bg-warning">{{repo.languages_url}}</span> -->
+                <a [href]="repo.languages_url" class= "text-primary" target="_blank">
+                    <p class=" fw-bold mt-3">Topics Used</p></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event" class="center"></pagination-controls>
+
+ </div>
+</div>
